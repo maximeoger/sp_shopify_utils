@@ -1,3 +1,6 @@
+-- https://stackoverflow.com/questions/40047695/get-images-with-sql-export-prestashop
+
+
 SELECT SQL_CALC_FOUND_ROWS 
   p.`reference` AS `reference`, -- variant SKU
   p.`price` AS `price`, -- variant price
