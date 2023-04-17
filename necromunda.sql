@@ -1,20 +1,19 @@
-SELECT SQL_CALC_FOUND_ROWS p.`id_product`  AS `id_product`,
+SELECT DISTINCT p.`id_product`  AS `id_product`,
  pl.`link_rewrite` AS `Handle`,
  pl.`name` AS `Title`,
- pl.`meta_title` AS `Meta Title`,
- pl.`meta_description` AS `Meta Description`,
+ pl.`meta_title` AS `SEO Title`,
+ pl.`meta_description` AS `SEO Description`,
  pl.`description` AS `Body (HTML)`,
  p.`reference`  AS `Sku`,
- p.`price`  AS `Price / International`,
+ FORMAT(p.`price`, 2, 'fr_FR')  AS `Price`,
  'active'  AS `Status`,
- 'Jeux De Figurines' AS `Custom product type`,
+ 'Jeux De Figurines' AS `Product Type`,
  'Games Workshop'  AS `Vendor`,
+ 'Necromunda' AS `Collection`,
  CONCAT('https://www.starplayer.fr/',i.id_image,'-large_default/',pl.link_rewrite,'.jpg') AS `Image Src`,
  '1' AS `Image Position`,
  '' AS `Barcode`,
  'FALSE'  AS `is_virtual`,
- il.`legend` AS `Image Alt Text`,
- 0 AS `Compare At Price / International`,
  'TRUE' AS `Requires Shipping`,
  'TRUE' AS `Taxable`,
  sav.`quantity`  AS `sav_quantity`,
@@ -29,7 +28,6 @@ FROM  `product` p
  LEFT JOIN `shop` shop ON (shop.id_shop = 1) 
  LEFT JOIN `image_shop` image_shop ON (image_shop.`id_product` = p.`id_product` AND image_shop.`cover` = 1 AND image_shop.id_shop = 1) 
  LEFT JOIN `image` i ON (i.`id_image` = image_shop.`id_image`) 
- LEFT JOIN `image_lang` il ON (il.`id_image` = i.`id_image`) 
  LEFT JOIN `product_download` pd ON (pd.`id_product` = p.`id_product`) 
  INNER JOIN `category_product` cp ON (cp.`id_product` = p.`id_product` AND cp.`id_category` = 362) 
 WHERE (1 AND state = 1)

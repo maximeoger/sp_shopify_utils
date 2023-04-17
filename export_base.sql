@@ -24,7 +24,7 @@ FROM  `product` p
  LEFT JOIN `image_shop` image_shop ON (image_shop.`id_product` = p.`id_product` AND image_shop.`cover` = 1 AND image_shop.id_shop = 1) 
  LEFT JOIN `image` i ON (i.`id_image` = image_shop.`id_image`) 
  LEFT JOIN `product_download` pd ON (pd.`id_product` = p.`id_product`) 
- INNER JOIN `category_product` cp ON (cp.`id_product` = p.`id_product` AND cp.`id_category` = 362) 
+ INNER JOIN `category_product` cp ON (cp.`id_product` = p.`id_product` AND cp.`id_category` = 2) 
 WHERE (1 AND state = 1)
  
 ORDER BY  `position` desc,  `id_product` asc
